@@ -83,7 +83,12 @@ function initialize() {
 function loadJson(key, fallback) {
   try {
     const value = localStorage.getItem(key);
-    return value ? { ...fallback, ...JSON.parse(value) } : Array.isArray(fallback) ? [] : { ...fallback };
+    if (!value) return Array.isArray(fallback) ? [] : { ...fallback };
+    const parsed = JSON.parse(value);
+    if (Array.isArray(fallback)) return Array.isArray(parsed) ? parsed : [];
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+      ? { ...fallback, ...parsed }
+      : { ...fallback };
   } catch {
     return Array.isArray(fallback) ? [] : { ...fallback };
   }
