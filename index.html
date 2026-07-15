@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Meta-Contradiction: contradiction resolution with structural and meta-level n-back training."
+    />
+    <meta name="theme-color" content="#090b10" />
+    <title>Meta-Contradiction</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="brand-row">
+        <div>
+          <p class="eyebrow">RELATIONAL REASONING</p>
+          <h1>Meta-Contradiction</h1>
+        </div>
+        <span class="version-badge">v1.0</span>
+      </header>
+
+      <section id="setup-view" class="view setup-view">
+        <div class="hero-card">
+          <p class="hero-copy">
+            Repair every contradiction. Retain its deep form. Classify how the next
+            contradiction transforms it. Then retain that meta-distinction at n-back.
+          </p>
+
+          <div class="rule-strip" aria-label="Permanent relation grammar">
+            <span><strong>=</strong> same state</span>
+            <span><strong>≠</strong> opposite state</span>
+            <span><strong class="claim-sample">outlined</strong> false claim</span>
+          </div>
+
+          <div class="settings-grid">
+            <label>
+              <span>N-back level</span>
+              <select id="n-back">
+                <option value="1">1-back</option>
+                <option value="2">2-back</option>
+                <option value="3">3-back</option>
+                <option value="4">4-back</option>
+                <option value="5">5-back</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Session length</span>
+              <select id="trial-count">
+                <option value="12">12 trials</option>
+                <option value="24">24 trials</option>
+                <option value="36">36 trials</option>
+                <option value="48">48 trials</option>
+              </select>
+            </label>
+
+            <label class="toggle-row">
+              <span>
+                <strong>Adaptive progression</strong>
+                <small>Adjust n only after full-session evidence.</small>
+              </span>
+              <input id="adaptive" type="checkbox" />
+            </label>
+          </div>
+
+          <div class="action-row">
+            <button id="start-game" class="primary-button" type="button">Start session</button>
+            <button
+              id="show-practice"
+              class="secondary-button"
+              type="button"
+              aria-expanded="false"
+            >
+              How it works
+            </button>
+          </div>
+
+          <p id="history-note" class="history-note"></p>
+        </div>
+
+        <aside id="practice-panel" class="practice-panel" hidden>
+          <h2>One compact trial</h2>
+          <div class="practice-stimulus" aria-label="A equals B, B differs from C, false claim A equals C">
+            <span>A=B</span> <span>B≠C</span> <span class="claim-token">A=C</span>
+          </div>
+          <p>
+            The first two relations imply <strong>A≠C</strong>, so repair the outlined
+            claim. From Trial 2 onward, classify the transformation from the previous
+            deep pattern. When an n-back comparison becomes available, judge it without
+            reopening earlier trials.
+          </p>
+          <ul>
+            <li><strong>Same:</strong> identical relation sequence.</li>
+            <li><strong>Mirror:</strong> sequence reverses.</li>
+            <li><strong>Invert:</strong> every = and ≠ swaps.</li>
+            <li><strong>Rotate:</strong> sequence shifts cyclically.</li>
+            <li><strong>Depth:</strong> one relation is added or removed.</li>
+          </ul>
+          <p class="caution">
+            This is an experimental training design, not a validated intelligence test.
+          </p>
+        </aside>
+      </section>
+
+      <section id="game-view" class="view game-view" hidden>
+        <div class="session-bar">
+          <div>
+            <span id="progress-text">Trial 1 / 24</span>
+            <div class="progress-track" aria-hidden="true">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+          </div>
+          <div class="session-badges">
+            <span id="n-badge">2-back</span>
+            <span id="load-badge">4 tokens</span>
+            <span id="live-score">Score —</span>
+          </div>
+        </div>
+
+        <article class="trial-card">
+          <p class="micro-label">REPAIR THE OUTLINED CLAIM</p>
+          <div id="stimulus" class="stimulus" aria-live="polite"></div>
+        </article>
+
+        <form id="response-form" class="response-form">
+          <fieldset id="repair-group" class="response-group">
+            <legend>Contradiction repair</legend>
+            <div class="choice-row two-choice">
+              <button type="button" data-field="repair" data-value="0" aria-pressed="false">
+                <strong>=</strong><span>Same</span>
+              </button>
+              <button type="button" data-field="repair" data-value="1" aria-pressed="false">
+                <strong>≠</strong><span>Opposite</span>
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset id="structure-group" class="response-group">
+            <legend>Contradiction n-back</legend>
+            <span class="warmup-label" hidden></span>
+            <div class="choice-row two-choice">
+              <button type="button" data-field="contradictionMatch" data-value="true" aria-pressed="false">
+                Match
+              </button>
+              <button type="button" data-field="contradictionMatch" data-value="false" aria-pressed="false">
+                Different
+              </button>
+            </div>
+          </fieldset>
+
+          <fieldset id="meta-group" class="response-group meta-group">
+            <legend>Previous → current</legend>
+            <span class="warmup-label" hidden></span>
+            <div class="choice-row meta-choice">
+              <button type="button" data-field="metaTransform" data-value="same" aria-pressed="false">Same</button>
+              <button type="button" data-field="metaTransform" data-value="mirror" aria-pressed="false">Mirror</button>
+              <button type="button" data-field="metaTransform" data-value="invert" aria-pressed="false">Invert</button>
+              <button type="button" data-field="metaTransform" data-value="rotate" aria-pressed="false">Rotate</button>
+              <button type="button" data-field="metaTransform" data-value="depth" aria-pressed="false">Depth</button>
+            </div>
+          </fieldset>
+
+          <fieldset id="meta-nback-group" class="response-group">
+            <legend>Meta n-back</legend>
+            <span class="warmup-label" hidden></span>
+            <div class="choice-row two-choice">
+              <button type="button" data-field="metaMatch" data-value="true" aria-pressed="false">
+                Match
+              </button>
+              <button type="button" data-field="metaMatch" data-value="false" aria-pressed="false">
+                Different
+              </button>
+            </div>
+          </fieldset>
+
+          <div id="feedback" class="feedback" hidden aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button id="quit-game" class="text-button" type="button">End session</button>
+            <button id="submit-response" class="primary-button" type="submit" disabled>
+              Resolve trial
+            </button>
+            <button id="next-trial" class="primary-button" type="button" hidden>
+              Next trial
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section id="summary-view" class="view summary-view" hidden>
+        <div class="summary-card">
+          <p class="eyebrow">SESSION COMPLETE</p>
+          <h2 id="summary-title">Structure held</h2>
+          <div id="summary-score" class="summary-score">86%</div>
+          <div id="summary-grid" class="summary-grid"></div>
+          <p id="recommendation" class="recommendation"></p>
+          <div class="action-row summary-actions">
+            <button id="restart-game" class="primary-button" type="button">Train again</button>
+            <button id="back-to-settings" class="secondary-button" type="button">Settings</button>
+            <button id="export-history" class="text-button" type="button">Export history</button>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <span>All progress remains in this browser.</span>
+        <span>No speed bonus: reasoning quality dominates.</span>
+      </footer>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
