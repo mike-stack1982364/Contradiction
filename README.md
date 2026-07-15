@@ -15,6 +15,19 @@ Open `index.html` directly in a modern browser, or publish the repository root w
 
 No build step or external dependency is required.
 
+## Learning and navigation
+
+The interface uses a light, high-contrast design and four permanent colour categories that retain the same meaning everywhere:
+
+1. blue — contradiction repair;
+2. purple — contradiction-structure n-back;
+3. orange — meta-transformation classification;
+4. green — meta-transformation n-back.
+
+The navigation path is **Home → Learn → Play → Progress**. The Learn portal contains five sequential lessons covering the two signs, contradiction repair, structural memory, transformation classes, and the complete four-job trial.
+
+The Play portal offers a **Guided session** and **Full session**. Both use exactly the same generated trials, n-back level, scoring, adaptive thresholds, and relational complexity. Guided mode changes only the clarity and amount of interface instruction.
+
 ## Formal grammar
 
 Each entity has one of two latent states:
