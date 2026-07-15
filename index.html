@@ -10,7 +10,6 @@
     <meta name="theme-color" content="#f4f8ff" />
     <title>Meta-Contradiction</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./audio.css" />
   </head>
   <body>
     <main class="app-shell">
@@ -43,7 +42,6 @@
             <div class="button-row">
               <button id="start-learning" class="primary-button" type="button">Start learning</button>
               <button id="skip-to-play" class="secondary-button" type="button">I know how to play</button>
-              <button id="hear-introduction" class="secondary-button" type="button">🔊 Hear introduction</button>
             </div>
           </div>
           <div class="welcome-symbol" aria-label="Example contradiction">
@@ -75,7 +73,7 @@
 
         <div class="truth-banner">
           <strong>The game is not simplified.</strong>
-          <span>The learning path and spoken mode explain the controls. The reasoning system remains unchanged.</span>
+          <span>The learning path explains the controls. The reasoning system remains unchanged.</span>
         </div>
       </section>
 
@@ -101,7 +99,6 @@
             <div id="lesson-body" class="lesson-body"></div>
             <div class="lesson-actions">
               <button id="lesson-back" class="secondary-button" type="button">Back</button>
-              <button id="read-lesson" class="secondary-button" type="button">🔊 Hear lesson</button>
               <button id="lesson-next" class="primary-button" type="button">Next lesson</button>
               <button id="lesson-play" class="primary-button" type="button" hidden>Choose a session</button>
             </div>
@@ -112,8 +109,8 @@
       <section id="play-view" class="view play-view" hidden>
         <div class="page-heading">
           <p class="overline">PLAY PORTAL</p>
-          <h1>Choose how the game helps you</h1>
-          <p>All three portals use exactly the same generator, scoring, n-back demand, and relational difficulty.</p>
+          <h1>Choose how the screen helps you</h1>
+          <p>Both portals use exactly the same generator, scoring, n-back demand, and relational difficulty.</p>
         </div>
 
         <div class="portal-grid">
@@ -135,16 +132,6 @@
               <p>The same complete task with shorter instructions and no coaching banner.</p>
             </div>
             <button id="start-full" class="secondary-button" type="button">Play full game</button>
-          </article>
-
-          <article class="portal-card audio-portal">
-            <div class="portal-icon" aria-hidden="true">🔊</div>
-            <div>
-              <p class="portal-label">VISION ACCESS</p>
-              <h2>Spoken session</h2>
-              <p>The full guided game is narrated aloud, with complete keyboard control and spoken feedback.</p>
-            </div>
-            <button id="start-audio" class="primary-button" type="button">Play spoken game</button>
           </article>
         </div>
 
@@ -188,72 +175,15 @@
               </span>
               <input id="adaptive" type="checkbox" />
             </label>
-          </div>
-        </div>
 
-        <div class="audio-settings-card" aria-labelledby="audio-settings-title">
-          <div class="audio-settings-heading">
-            <div>
-              <p class="overline">SPOKEN ACCESSIBILITY</p>
-              <h2 id="audio-settings-title">Hear and control the whole game</h2>
-            </div>
-            <p id="speech-support-status" class="audio-support-status" role="status" aria-live="polite"></p>
-          </div>
-
-          <div class="audio-control-grid">
-            <label class="toggle-row audio-primary-toggle">
+            <label class="toggle-row">
               <span>
-                <strong>Spoken accessibility</strong>
-                <small>Automatically narrate each trial, available jobs, selections, feedback, and the final summary.</small>
+                <strong>Spoken premises</strong>
+                <small>Speak only the displayed relations once at the start of each trial.</small>
               </span>
-              <input id="spoken-mode" type="checkbox" />
+              <input id="spoken-premises" type="checkbox" />
             </label>
-
-            <label>
-              <span>Voice</span>
-              <small>Uses voices installed by your browser or device.</small>
-              <select id="speech-voice" aria-label="Spoken accessibility voice"></select>
-            </label>
-
-            <label>
-              <span>Speech rate: <strong id="speech-rate-value">0.85×</strong></span>
-              <small>Slower speech can make relation chains easier to distinguish.</small>
-              <input id="speech-rate" type="range" min="0.5" max="1.5" step="0.05" value="0.85" />
-            </label>
-
-            <label>
-              <span>Speech volume: <strong id="speech-volume-value">100%</strong></span>
-              <small>This changes the browser voice, not your device’s master volume.</small>
-              <input id="speech-volume" type="range" min="0" max="100" step="5" value="100" />
-            </label>
-
-            <div class="audio-toggle-stack">
-              <label class="toggle-row">
-                <span><strong>Detailed prompts</strong><small>Read every active job and its keys on each trial.</small></span>
-                <input id="speech-detailed" type="checkbox" checked />
-              </label>
-              <label class="toggle-row">
-                <span><strong>Spoken feedback</strong><small>Read correctness and the right answer for each stream.</small></span>
-                <input id="speech-feedback" type="checkbox" checked />
-              </label>
-              <label class="toggle-row">
-                <span><strong>Announce selections</strong><small>Confirm each answer immediately after it is chosen.</small></span>
-                <input id="speech-selections" type="checkbox" checked />
-              </label>
-            </div>
-
-            <div class="audio-test-row">
-              <button id="speech-test" class="secondary-button" type="button">🔊 Test voice</button>
-              <p class="audio-key-guide">
-                <strong>Complete keyboard:</strong> 1/2 repair · 3/4 pattern memory · S/M/I/R/D transformation ·
-                5/6 transformation memory · Enter check/continue · Q repeat · X stop speech.
-              </p>
-            </div>
           </div>
-
-          <p class="audio-only-note">
-            Spoken mode does not alter trial generation, memory distance, scoring, feedback, or adaptive progression.
-          </p>
         </div>
       </section>
 
@@ -270,17 +200,6 @@
       </section>
 
       <section id="game-view" class="view game-view" hidden>
-        <div id="audio-game-toolbar" class="audio-game-toolbar" hidden>
-          <div>
-            <strong>Spoken accessibility is active</strong>
-            <span id="audio-game-status" role="status" aria-live="polite">Ready to narrate</span>
-          </div>
-          <div class="audio-toolbar-actions">
-            <button id="repeat-trial" class="secondary-button" type="button" aria-keyshortcuts="Q">🔊 Hear trial again (Q)</button>
-            <button id="stop-speaking" class="secondary-button" type="button" aria-keyshortcuts="X">Stop speech (X)</button>
-          </div>
-        </div>
-
         <div id="coach-banner" class="coach-banner" hidden>
           <span aria-hidden="true">🧭</span>
           <div><strong>Guide is on.</strong><p>Complete every numbered job. Only the instructions are easier to follow; the game itself is unchanged.</p></div>
@@ -300,7 +219,7 @@
 
         <article class="trial-card">
           <div class="trial-heading">
-            <span class="trial-step">Read or hear this puzzle</span>
+            <span class="trial-step">Read this puzzle</span>
             <p>The outlined ending is always wrong. Your first job is to repair it.</p>
           </div>
           <div id="stimulus" class="stimulus" aria-live="polite" aria-atomic="true"></div>
@@ -311,8 +230,8 @@
             <legend><span>1</span> Fix the ending</legend>
             <p class="group-help">What relation must replace the outlined ending?</p>
             <div class="choice-row two-choice">
-              <button type="button" data-field="repair" data-value="0" aria-pressed="false" aria-keyshortcuts="1"><strong>=</strong><span>Same</span></button>
-              <button type="button" data-field="repair" data-value="1" aria-pressed="false" aria-keyshortcuts="2"><strong>≠</strong><span>Opposite</span></button>
+              <button type="button" data-field="repair" data-value="0" aria-pressed="false"><strong>=</strong><span>Same</span></button>
+              <button type="button" data-field="repair" data-value="1" aria-pressed="false"><strong>≠</strong><span>Opposite</span></button>
             </div>
           </fieldset>
 
@@ -321,8 +240,8 @@
             <p class="group-help">Ignore the letters. Is the = and ≠ pattern the same as n trials ago?</p>
             <span class="warmup-label" hidden></span>
             <div class="choice-row two-choice">
-              <button type="button" data-field="contradictionMatch" data-value="true" aria-pressed="false" aria-keyshortcuts="3">Match</button>
-              <button type="button" data-field="contradictionMatch" data-value="false" aria-pressed="false" aria-keyshortcuts="4">Different</button>
+              <button type="button" data-field="contradictionMatch" data-value="true" aria-pressed="false">Match</button>
+              <button type="button" data-field="contradictionMatch" data-value="false" aria-pressed="false">Different</button>
             </div>
           </fieldset>
 
@@ -331,11 +250,11 @@
             <p class="group-help">How did the previous deep pattern become this pattern?</p>
             <span class="warmup-label" hidden></span>
             <div class="choice-row meta-choice">
-              <button type="button" data-field="metaTransform" data-value="same" aria-pressed="false" aria-keyshortcuts="S"><strong>Same</strong><small>No change</small></button>
-              <button type="button" data-field="metaTransform" data-value="mirror" aria-pressed="false" aria-keyshortcuts="M"><strong>Mirror</strong><small>Backwards</small></button>
-              <button type="button" data-field="metaTransform" data-value="invert" aria-pressed="false" aria-keyshortcuts="I"><strong>Invert</strong><small>All signs swap</small></button>
-              <button type="button" data-field="metaTransform" data-value="rotate" aria-pressed="false" aria-keyshortcuts="R"><strong>Rotate</strong><small>Signs shift</small></button>
-              <button type="button" data-field="metaTransform" data-value="depth" aria-pressed="false" aria-keyshortcuts="D"><strong>Depth</strong><small>One added or removed</small></button>
+              <button type="button" data-field="metaTransform" data-value="same" aria-pressed="false"><strong>Same</strong><small>No change</small></button>
+              <button type="button" data-field="metaTransform" data-value="mirror" aria-pressed="false"><strong>Mirror</strong><small>Backwards</small></button>
+              <button type="button" data-field="metaTransform" data-value="invert" aria-pressed="false"><strong>Invert</strong><small>All signs swap</small></button>
+              <button type="button" data-field="metaTransform" data-value="rotate" aria-pressed="false"><strong>Rotate</strong><small>Signs shift</small></button>
+              <button type="button" data-field="metaTransform" data-value="depth" aria-pressed="false"><strong>Depth</strong><small>One added or removed</small></button>
             </div>
           </fieldset>
 
@@ -344,8 +263,8 @@
             <p class="group-help">Is this change type the same as the change type from n transitions ago?</p>
             <span class="warmup-label" hidden></span>
             <div class="choice-row two-choice">
-              <button type="button" data-field="metaMatch" data-value="true" aria-pressed="false" aria-keyshortcuts="5">Match</button>
-              <button type="button" data-field="metaMatch" data-value="false" aria-pressed="false" aria-keyshortcuts="6">Different</button>
+              <button type="button" data-field="metaMatch" data-value="true" aria-pressed="false">Match</button>
+              <button type="button" data-field="metaMatch" data-value="false" aria-pressed="false">Different</button>
             </div>
           </fieldset>
 
@@ -353,8 +272,8 @@
 
           <div class="form-actions">
             <button id="quit-game" class="text-button" type="button">End session</button>
-            <button id="submit-response" class="primary-button" type="submit" disabled aria-keyshortcuts="Enter">Check all answers</button>
-            <button id="next-trial" class="primary-button" type="button" hidden aria-keyshortcuts="Enter">Next trial</button>
+            <button id="submit-response" class="primary-button" type="submit" disabled>Check all answers</button>
+            <button id="next-trial" class="primary-button" type="button" hidden>Next trial</button>
           </div>
         </form>
       </section>
