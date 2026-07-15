@@ -26,35 +26,27 @@ The interface uses a light, high-contrast design and four permanent colour categ
 
 The navigation path is **Home → Learn → Play → Progress**. The Learn portal contains five sequential lessons covering the two signs, contradiction repair, structural memory, transformation classes, and the complete four-job trial.
 
-The Play portal offers **Guided**, **Full**, and **Spoken** sessions. All three use exactly the same generated trials, n-back level, scoring, adaptive thresholds, and relational complexity. Guided and Spoken modes change only presentation and accessibility support.
+The Play portal offers a **Guided session** and **Full session**. Both use exactly the same generated trials, n-back level, scoring, adaptive thresholds, and relational complexity. Guided mode changes only the clarity and amount of interface instruction.
 
-## Spoken accessibility
+## Spoken premises
 
-Spoken mode uses the browser's native speech-synthesis voices and is implemented as a separate accessibility module rather than being mixed into the reasoning engine.
+Session Settings contains one **Spoken premises** toggle.
 
-It provides:
+When enabled, the browser speaks each displayed relation once, in order, at the start of every trial. It speaks no instructions, labels, selections, feedback, scores, summaries, or navigation content.
 
-- automatic narration of every premise and contradictory claim;
-- explicit narration of whichever of the four jobs are currently available;
-- voice, rate, and volume controls;
-- optional detailed key prompts, selection confirmation, and spoken feedback;
-- spoken lesson and introduction buttons;
-- replay and stop-speech controls during play;
-- a spoken final-session summary;
-- mobile audio priming from the user's start gesture;
-- graceful fallback to semantic HTML and keyboard controls when speech synthesis is unavailable.
+For example:
 
-Complete keyboard controls:
+```text
+A=B  B≠C  A=C
+```
 
-- `1` / `2` — contradiction repair: same / opposite;
-- `3` / `4` — contradiction-pattern n-back: match / different;
-- `S` / `M` / `I` / `R` / `D` — Same / Mirror / Invert / Rotate / Depth;
-- `5` / `6` — meta-transformation n-back: match / different;
-- `Enter` — check answers or continue;
-- `Q` — repeat the current spoken trial;
-- `X` — stop speech.
+is spoken as:
 
-Spoken mode never changes trial generation, scoring, memory distance, or adaptive progression.
+```text
+A equals B. B does not equal C. A equals C.
+```
+
+The toggle does not alter trial generation, difficulty, scoring, memory distance, feedback, or adaptive progression.
 
 ## Formal grammar
 
@@ -103,10 +95,8 @@ The automated tests verify:
 - generated meta-transformations are unambiguous;
 - contradiction and meta n-back truth values use the correct references;
 - complete correct responses score correctly;
-- relation symbols are narrated unambiguously;
-- all available reasoning streams are included in spoken trials;
-- warm-up trials do not invent unavailable audio questions;
-- spoken feedback separates the scored streams.
+- relation symbols are verbalised unambiguously;
+- spoken output contains only the displayed relations in their original order.
 
 ## Research status
 
