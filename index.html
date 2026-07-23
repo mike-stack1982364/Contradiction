@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Meta-Contradiction: contradiction resolution with structural and meta-level n-back training."
-    />
+    <meta name="description" content="Meta-Contradiction: contradiction resolution with structural and meta-level n-back training." />
     <meta name="theme-color" content="#f4f8ff" />
     <title>Meta-Contradiction</title>
     <link rel="stylesheet" href="./styles.css" />
@@ -16,291 +13,63 @@
       <header class="topbar">
         <button class="brand-button" type="button" data-view="home" aria-label="Meta-Contradiction home">
           <span class="brand-mark" aria-hidden="true">MC</span>
-          <span>
-            <strong>Meta-Contradiction</strong>
-            <small>Think. Remember. Transform.</small>
-          </span>
+          <span><strong>Meta-Contradiction</strong><small>Think. Remember. Transform.</small></span>
         </button>
-
         <nav id="main-navigation" class="main-navigation" aria-label="Main navigation">
-          <button type="button" data-view="home">Home</button>
-          <button type="button" data-view="learn">Learn</button>
-          <button type="button" data-view="play">Play</button>
-          <button type="button" data-view="progress">Progress</button>
+          <button type="button" data-view="home">Home</button><button type="button" data-view="learn">Learn</button><button type="button" data-view="play">Play</button><button type="button" data-view="progress">Progress</button>
         </nav>
       </header>
 
       <section id="home-view" class="view home-view">
         <div class="welcome-card">
-          <div class="welcome-copy">
-            <p class="overline">WELCOME</p>
-            <h1>Four thinking jobs.<br />One powerful game.</h1>
-            <p class="lead">
-              Find the wrong ending. Remember the pattern. Notice how the pattern changed.
-              Then remember that kind of change.
-            </p>
-            <div class="button-row">
-              <button id="start-learning" class="primary-button" type="button">Start learning</button>
-              <button id="skip-to-play" class="secondary-button" type="button">I know how to play</button>
-            </div>
-          </div>
-          <div class="welcome-symbol" aria-label="Example contradiction">
-            <span>A=B</span>
-            <span>B≠C</span>
-            <span class="wrong-claim">A=C</span>
-            <strong>Find the lie.</strong>
-          </div>
+          <div class="welcome-copy"><p class="overline">WELCOME</p><h1>Four thinking jobs.<br />One powerful game.</h1><p class="lead">Find the wrong ending. Remember the pattern. Notice how the pattern changed. Then remember that kind of change.</p><div class="button-row"><button id="start-learning" class="primary-button" type="button">Start learning</button><button id="skip-to-play" class="secondary-button" type="button">I know how to play</button></div></div>
+          <div class="welcome-symbol" aria-label="Example contradiction"><span>A=B</span><span>B≠C</span><span class="wrong-claim">A=C</span><strong>Find the lie.</strong></div>
         </div>
-
         <div class="mission-grid" aria-label="The four jobs in every full trial">
-          <article class="mission-card job-one">
-            <span class="job-number">1</span>
-            <div><h2>Fix the ending</h2><p>Work out whether the boxed relation must be = or ≠.</p></div>
-          </article>
-          <article class="mission-card job-two">
-            <span class="job-number">2</span>
-            <div><h2>Remember the pattern</h2><p>Compare this deep pattern with the one from n trials ago.</p></div>
-          </article>
-          <article class="mission-card job-three">
-            <span class="job-number">3</span>
-            <div><h2>Name the change</h2><p>Decide how the previous pattern became the current pattern.</p></div>
-          </article>
-          <article class="mission-card job-four">
-            <span class="job-number">4</span>
-            <div><h2>Remember the change</h2><p>Compare this kind of change with the change from n steps ago.</p></div>
-          </article>
+          <article class="mission-card job-one"><span class="job-number">1</span><div><h2>Fix the ending</h2><p>Work out whether the boxed relation must be = or ≠.</p></div></article>
+          <article class="mission-card job-two"><span class="job-number">2</span><div><h2>Remember the pattern</h2><p>Compare this deep pattern with the one from n trials ago.</p></div></article>
+          <article class="mission-card job-three"><span class="job-number">3</span><div><h2>Name the change</h2><p>Decide how the previous pattern became the current pattern.</p></div></article>
+          <article class="mission-card job-four"><span class="job-number">4</span><div><h2>Remember the change</h2><p>Compare this kind of change with the change from n steps ago.</p></div></article>
         </div>
-
-        <div class="truth-banner">
-          <strong>The game is not simplified.</strong>
-          <span>The learning path explains the controls. The reasoning system remains unchanged.</span>
-        </div>
+        <div class="truth-banner"><strong>The game is not simplified.</strong><span>The learning path explains the controls. The reasoning system remains unchanged.</span></div>
       </section>
 
       <section id="learn-view" class="view learn-view" hidden>
-        <div class="page-heading">
-          <p class="overline">LEARNING PATH</p>
-          <h1>Learn one idea at a time</h1>
-          <p>Move through five short lessons. Every lesson prepares you for the complete game.</p>
-        </div>
-
-        <div class="lesson-layout">
-          <aside class="lesson-map" aria-label="Lesson progress">
-            <button class="lesson-dot" type="button" data-lesson="0"><span>1</span> The signs</button>
-            <button class="lesson-dot" type="button" data-lesson="1"><span>2</span> Find the lie</button>
-            <button class="lesson-dot" type="button" data-lesson="2"><span>3</span> Pattern memory</button>
-            <button class="lesson-dot" type="button" data-lesson="3"><span>4</span> Pattern changes</button>
-            <button class="lesson-dot" type="button" data-lesson="4"><span>5</span> All four jobs</button>
-          </aside>
-
-          <article class="lesson-card">
-            <div class="lesson-counter">Lesson <span id="lesson-number">1</span> of 5</div>
-            <h2 id="lesson-title"></h2>
-            <div id="lesson-body" class="lesson-body"></div>
-            <div class="lesson-actions">
-              <button id="lesson-back" class="secondary-button" type="button">Back</button>
-              <button id="lesson-next" class="primary-button" type="button">Next lesson</button>
-              <button id="lesson-play" class="primary-button" type="button" hidden>Choose a session</button>
-            </div>
-          </article>
-        </div>
+        <div class="page-heading"><p class="overline">LEARNING PATH</p><h1>Learn one idea at a time</h1><p>Move through five short lessons. Every lesson prepares you for the complete game.</p></div>
+        <div class="lesson-layout"><aside class="lesson-map" aria-label="Lesson progress"><button class="lesson-dot" type="button" data-lesson="0"><span>1</span> The signs</button><button class="lesson-dot" type="button" data-lesson="1"><span>2</span> Find the lie</button><button class="lesson-dot" type="button" data-lesson="2"><span>3</span> Pattern memory</button><button class="lesson-dot" type="button" data-lesson="3"><span>4</span> Pattern changes</button><button class="lesson-dot" type="button" data-lesson="4"><span>5</span> All four jobs</button></aside><article class="lesson-card"><div class="lesson-counter">Lesson <span id="lesson-number">1</span> of 5</div><h2 id="lesson-title"></h2><div id="lesson-body" class="lesson-body"></div><div class="lesson-actions"><button id="lesson-back" class="secondary-button" type="button">Back</button><button id="lesson-next" class="primary-button" type="button">Next lesson</button><button id="lesson-play" class="primary-button" type="button" hidden>Choose a session</button></div></article></div>
       </section>
 
       <section id="play-view" class="view play-view" hidden>
-        <div class="page-heading">
-          <p class="overline">PLAY PORTAL</p>
-          <h1>Choose how the screen helps you</h1>
-          <p>Both portals use exactly the same generator, scoring, n-back demand, and relational difficulty.</p>
-        </div>
-
-        <div class="portal-grid">
-          <article class="portal-card guided-portal">
-            <div class="portal-icon" aria-hidden="true">🧭</div>
-            <div>
-              <p class="portal-label">BEST FIRST</p>
-              <h2>Guided session</h2>
-              <p>Large numbered instructions explain each answer box while you solve the full game.</p>
-            </div>
-            <button id="start-guided" class="primary-button" type="button">Play with guide</button>
-          </article>
-
-          <article class="portal-card full-portal">
-            <div class="portal-icon" aria-hidden="true">⚡</div>
-            <div>
-              <p class="portal-label">CLEAN SCREEN</p>
-              <h2>Full session</h2>
-              <p>The same complete task with shorter instructions and no coaching banner.</p>
-            </div>
-            <button id="start-full" class="secondary-button" type="button">Play full game</button>
-          </article>
-        </div>
-
-        <div class="settings-card">
-          <div class="settings-heading">
-            <div>
-              <p class="overline">SESSION SETTINGS</p>
-              <h2>Set the memory distance</h2>
-            </div>
-            <p id="history-note" class="history-note"></p>
-          </div>
-
-          <div class="settings-grid">
-            <label>
-              <span>N-back level</span>
-              <small>How many trials back both memory streams reach.</small>
-              <select id="n-back">
-                <option value="1">1-back</option>
-                <option value="2">2-back</option>
-                <option value="3">3-back</option>
-                <option value="4">4-back</option>
-                <option value="5">5-back</option>
-              </select>
-            </label>
-
-            <label>
-              <span>Session length</span>
-              <small>Every trial still contains all available reasoning jobs.</small>
-              <select id="trial-count">
-                <option value="12">12 trials</option>
-                <option value="24">24 trials</option>
-                <option value="36">36 trials</option>
-                <option value="48">48 trials</option>
-              </select>
-            </label>
-
-            <label class="toggle-row">
-              <span>
-                <strong>Adaptive progression</strong>
-                <small>Change n only after complete-session evidence.</small>
-              </span>
-              <input id="adaptive" type="checkbox" />
-            </label>
-
-            <label class="toggle-row">
-              <span>
-                <strong>Spoken premises</strong>
-                <small>Speak only the displayed relations once at the start of each trial.</small>
-              </span>
-              <input id="spoken-premises" type="checkbox" />
-            </label>
-          </div>
-        </div>
+        <div class="page-heading"><p class="overline">PLAY PORTAL</p><h1>Choose how the screen helps you</h1><p>Both portals use exactly the same generator, scoring, n-back demand, relational difficulty, and optional auditory premises.</p></div>
+        <div class="portal-grid"><article class="portal-card guided-portal"><div class="portal-icon" aria-hidden="true">🧭</div><div><p class="portal-label">BEST FIRST</p><h2>Guided session</h2><p>Large numbered instructions explain each answer box while you solve the full game.</p></div><button id="start-guided" class="primary-button" type="button">Play with guide</button></article><article class="portal-card full-portal"><div class="portal-icon" aria-hidden="true">⚡</div><div><p class="portal-label">CLEAN SCREEN</p><h2>Full session</h2><p>The same complete task with shorter instructions and no coaching banner.</p></div><button id="start-full" class="secondary-button" type="button">Play full game</button></article></div>
+        <div class="settings-card"><div class="settings-heading"><div><p class="overline">SESSION SETTINGS</p><h2>Set memory and auditory timing</h2></div><p id="history-note" class="history-note"></p></div><div class="settings-grid">
+          <label><span>N-back level</span><small>How many trials back both memory streams reach.</small><select id="n-back"><option value="1">1-back</option><option value="2">2-back</option><option value="3">3-back</option><option value="4">4-back</option><option value="5">5-back</option></select></label>
+          <label><span>Session length</span><small>Every trial still contains all available reasoning jobs.</small><select id="trial-count"><option value="12">12 trials</option><option value="24">24 trials</option><option value="36">36 trials</option><option value="48">48 trials</option></select></label>
+          <label class="toggle-row"><span><strong>Adaptive progression</strong><small>Change n only after complete-session evidence.</small></span><input id="adaptive" type="checkbox" /></label>
+          <label class="toggle-row"><span><strong>Spoken premises</strong><small>Speak the displayed relations once at the beginning of every trial.</small></span><input id="spoken-premises" type="checkbox" /></label>
+          <label><span>Premise speech speed</span><small>Controls how quickly each auditory premise is spoken.</small><select id="speech-rate"><option value="0.55">Very slow</option><option value="0.7">Slow</option><option value="0.85">Measured</option><option value="1">Normal</option><option value="1.2">Fast</option><option value="1.45">Very fast</option><option value="1.75">Extreme</option></select></label>
+          <label><span>Delay between trials</span><small>Applied after you press Next trial, before the following premise appears and is spoken.</small><select id="trial-delay"><option value="0">No delay</option><option value="500">0.5 seconds</option><option value="1000">1 second</option><option value="2000">2 seconds</option><option value="3000">3 seconds</option><option value="5000">5 seconds</option><option value="8000">8 seconds</option><option value="10000">10 seconds</option></select></label>
+        </div></div>
       </section>
 
-      <section id="progress-view" class="view progress-view" hidden>
-        <div class="page-heading progress-heading">
-          <div>
-            <p class="overline">PROGRESS PORTAL</p>
-            <h1>Your completed sessions</h1>
-            <p>Scores are separated so a strong repair score cannot hide a weak memory stream.</p>
-          </div>
-          <button id="export-history-page" class="secondary-button" type="button">Export history</button>
-        </div>
-        <div id="progress-list" class="progress-list"></div>
-      </section>
+      <section id="progress-view" class="view progress-view" hidden><div class="page-heading progress-heading"><div><p class="overline">PROGRESS PORTAL</p><h1>Your completed sessions</h1><p>Scores are separated so a strong repair score cannot hide a weak memory stream.</p></div><button id="export-history-page" class="secondary-button" type="button">Export history</button></div><div id="progress-list" class="progress-list"></div></section>
 
       <section id="game-view" class="view game-view" hidden>
-        <div id="coach-banner" class="coach-banner" hidden>
-          <span aria-hidden="true">🧭</span>
-          <div><strong>Guide is on.</strong><p>Complete every numbered job. Only the instructions are easier to follow; the game itself is unchanged.</p></div>
-        </div>
-
-        <div class="session-bar">
-          <div class="trial-progress-block">
-            <strong id="progress-text">Trial 1 / 24</strong>
-            <div class="progress-track" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div>
-          </div>
-          <div class="session-badges">
-            <span id="n-badge">2-back</span>
-            <span id="load-badge">4 tokens</span>
-            <span id="live-score">Score —</span>
-          </div>
-        </div>
-
-        <article class="trial-card">
-          <div class="trial-heading">
-            <span class="trial-step">Read this puzzle</span>
-            <p>The outlined ending is always wrong. Your first job is to repair it.</p>
-          </div>
-          <div id="stimulus" class="stimulus" aria-live="polite" aria-atomic="true"></div>
-        </article>
-
+        <div id="coach-banner" class="coach-banner" hidden><span aria-hidden="true">🧭</span><div><strong>Guide is on.</strong><p>Complete every numbered job. Only the instructions are easier to follow; the game itself is unchanged.</p></div></div>
+        <div class="session-bar"><div class="trial-progress-block"><strong id="progress-text">Trial 1 / 24</strong><div class="progress-track" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div></div><div class="session-badges"><span id="n-badge">2-back</span><span id="load-badge">4 tokens</span><span id="live-score">Score —</span></div></div>
+        <article class="trial-card"><div class="trial-heading"><span class="trial-step">Read or listen to this puzzle</span><p>The outlined ending is always wrong. Your first job is to repair it.</p></div><div id="stimulus" class="stimulus" aria-live="polite" aria-atomic="true"></div></article>
         <form id="response-form" class="response-form">
-          <fieldset id="repair-group" class="response-group job-one-panel">
-            <legend><span>1</span> Fix the ending</legend>
-            <p class="group-help">What relation must replace the outlined ending?</p>
-            <div class="choice-row two-choice">
-              <button type="button" data-field="repair" data-value="0" aria-pressed="false"><strong>=</strong><span>Same</span></button>
-              <button type="button" data-field="repair" data-value="1" aria-pressed="false"><strong>≠</strong><span>Opposite</span></button>
-            </div>
-          </fieldset>
-
-          <fieldset id="structure-group" class="response-group job-two-panel">
-            <legend><span>2</span> Remember the pattern</legend>
-            <p class="group-help">Ignore the letters. Is the = and ≠ pattern the same as n trials ago?</p>
-            <span class="warmup-label" hidden></span>
-            <div class="choice-row two-choice">
-              <button type="button" data-field="contradictionMatch" data-value="true" aria-pressed="false">Match</button>
-              <button type="button" data-field="contradictionMatch" data-value="false" aria-pressed="false">Different</button>
-            </div>
-          </fieldset>
-
-          <fieldset id="meta-group" class="response-group job-three-panel">
-            <legend><span>3</span> Name the change</legend>
-            <p class="group-help">How did the previous deep pattern become this pattern?</p>
-            <span class="warmup-label" hidden></span>
-            <div class="choice-row meta-choice">
-              <button type="button" data-field="metaTransform" data-value="same" aria-pressed="false"><strong>Same</strong><small>No change</small></button>
-              <button type="button" data-field="metaTransform" data-value="mirror" aria-pressed="false"><strong>Mirror</strong><small>Backwards</small></button>
-              <button type="button" data-field="metaTransform" data-value="invert" aria-pressed="false"><strong>Invert</strong><small>All signs swap</small></button>
-              <button type="button" data-field="metaTransform" data-value="rotate" aria-pressed="false"><strong>Rotate</strong><small>Signs shift</small></button>
-              <button type="button" data-field="metaTransform" data-value="depth" aria-pressed="false"><strong>Depth</strong><small>One added or removed</small></button>
-            </div>
-          </fieldset>
-
-          <fieldset id="meta-nback-group" class="response-group job-four-panel">
-            <legend><span>4</span> Remember the change</legend>
-            <p class="group-help">Is this change type the same as the change type from n transitions ago?</p>
-            <span class="warmup-label" hidden></span>
-            <div class="choice-row two-choice">
-              <button type="button" data-field="metaMatch" data-value="true" aria-pressed="false">Match</button>
-              <button type="button" data-field="metaMatch" data-value="false" aria-pressed="false">Different</button>
-            </div>
-          </fieldset>
-
-          <div id="feedback" class="feedback" hidden aria-live="polite" aria-atomic="true"></div>
-
-          <div class="form-actions">
-            <button id="quit-game" class="text-button" type="button">End session</button>
-            <button id="submit-response" class="primary-button" type="submit" disabled>Check all answers</button>
-            <button id="next-trial" class="primary-button" type="button" hidden>Next trial</button>
-          </div>
+          <fieldset id="repair-group" class="response-group job-one-panel"><legend><span>1</span> Fix the ending</legend><p class="group-help">What relation must replace the outlined ending?</p><div class="choice-row two-choice"><button type="button" data-field="repair" data-value="0" aria-pressed="false"><strong>=</strong><span>Same</span></button><button type="button" data-field="repair" data-value="1" aria-pressed="false"><strong>≠</strong><span>Opposite</span></button></div></fieldset>
+          <fieldset id="structure-group" class="response-group job-two-panel"><legend><span>2</span> Remember the pattern</legend><p class="group-help">Ignore the letters. Is the = and ≠ pattern the same as n trials ago?</p><span class="warmup-label" hidden></span><div class="choice-row two-choice"><button type="button" data-field="contradictionMatch" data-value="true" aria-pressed="false">Match</button><button type="button" data-field="contradictionMatch" data-value="false" aria-pressed="false">Different</button></div></fieldset>
+          <fieldset id="meta-group" class="response-group job-three-panel"><legend><span>3</span> Name the change</legend><p class="group-help">How did the previous deep pattern become this pattern?</p><span class="warmup-label" hidden></span><div class="choice-row meta-choice"><button type="button" data-field="metaTransform" data-value="same" aria-pressed="false"><strong>Same</strong><small>No change</small></button><button type="button" data-field="metaTransform" data-value="mirror" aria-pressed="false"><strong>Mirror</strong><small>Backwards</small></button><button type="button" data-field="metaTransform" data-value="invert" aria-pressed="false"><strong>Invert</strong><small>All signs swap</small></button><button type="button" data-field="metaTransform" data-value="rotate" aria-pressed="false"><strong>Rotate</strong><small>Signs shift</small></button><button type="button" data-field="metaTransform" data-value="depth" aria-pressed="false"><strong>Depth</strong><small>One added or removed</small></button></div></fieldset>
+          <fieldset id="meta-nback-group" class="response-group job-four-panel"><legend><span>4</span> Remember the change</legend><p class="group-help">Is this change type the same as the change type from n transitions ago?</p><span class="warmup-label" hidden></span><div class="choice-row two-choice"><button type="button" data-field="metaMatch" data-value="true" aria-pressed="false">Match</button><button type="button" data-field="metaMatch" data-value="false" aria-pressed="false">Different</button></div></fieldset>
+          <div id="feedback" class="feedback" hidden aria-live="polite" aria-atomic="true"></div><div class="form-actions"><button id="quit-game" class="text-button" type="button">End session</button><button id="submit-response" class="primary-button" type="submit" disabled>Check all answers</button><button id="next-trial" class="primary-button" type="button" hidden>Next trial</button></div>
         </form>
       </section>
 
-      <section id="summary-view" class="view summary-view" hidden>
-        <div class="summary-card">
-          <p class="overline">SESSION COMPLETE</p>
-          <h1 id="summary-title">Structure held</h1>
-          <div id="summary-score" class="summary-score">86%</div>
-          <div id="summary-grid" class="summary-grid"></div>
-          <p id="recommendation" class="recommendation"></p>
-          <div class="button-row summary-actions">
-            <button id="restart-game" class="primary-button" type="button">Train again</button>
-            <button id="back-to-play" class="secondary-button" type="button">Play portal</button>
-            <button id="view-progress" class="secondary-button" type="button">See progress</button>
-            <button id="export-history" class="text-button" type="button">Export history</button>
-          </div>
-        </div>
-      </section>
-
-      <footer>
-        <span>Progress stays in this browser.</span>
-        <span>No speed bonus. Reasoning quality dominates.</span>
-      </footer>
+      <section id="summary-view" class="view summary-view" hidden><div class="summary-card"><p class="overline">SESSION COMPLETE</p><h1 id="summary-title">Structure held</h1><div id="summary-score" class="summary-score">86%</div><div id="summary-grid" class="summary-grid"></div><p id="recommendation" class="recommendation"></p><div class="button-row summary-actions"><button id="restart-game" class="primary-button" type="button">Train again</button><button id="back-to-play" class="secondary-button" type="button">Play portal</button><button id="view-progress" class="secondary-button" type="button">See progress</button><button id="export-history" class="text-button" type="button">Export history</button></div></div></section>
+      <footer><span>Progress stays in this browser.</span><span>No speed bonus. Reasoning quality dominates.</span></footer>
     </main>
-
-    <script type="module" src="./app.js"></script>
-    <script type="module" src="./audio.js"></script>
+    <script type="module" src="./app.js"></script><script type="module" src="./audio.js"></script>
   </body>
 </html>
